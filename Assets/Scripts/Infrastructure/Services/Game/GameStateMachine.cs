@@ -1,16 +1,16 @@
 ﻿using System;
-using System.Threading.Tasks;
 using Cysharp.Threading.Tasks;
-using DefaultNamespace;
 using Game;
 using Infrastructure.Core;
+using Infrastructure.Services.Arena;
 using Stateless;
+using StaticData;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace Infrastructure.Services.Game
 {
-    public class GameStateMachine : IStateMachine
+    public class GameStateMachine : IStateMachine<GameState, GameEvent>
     {
         private readonly StateMachine<GameState, GameEvent> _stateMachine =
             new StateMachine<GameState, GameEvent>(GameState.Loading, FiringMode.Queued);
@@ -32,10 +32,17 @@ namespace Infrastructure.Services.Game
 
             _stateMachine.Configure(GameState.MainMenu)
                 .Permit(GameEvent.EnterArena, GameState.Arena)
+                .OnActivate(() => PlayLevel(ScriptableObject.CreateInstance<ArenaInfo>()))
                 .OnEntryFrom(_finishArenaTrigger, result => { });
 
             _stateMachine.Configure(GameState.Arena)
                 .Permit(GameEvent.FinishArena, GameState.MainMenu);
+        }
+
+        private void PlayLevel(ArenaInfo arenaInfo)
+        {
+            ArenaStateMachine arenaStateMachine = new ArenaStateMachine(arenaInfo);
+            arenaStateMachine.Activate();
         }
 
         public UniTask ActivateAsync() =>

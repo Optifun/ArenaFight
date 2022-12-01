@@ -3,11 +3,11 @@ using Infrastructure.Services.Game;
 
 namespace Infrastructure.Core
 {
-    public interface IStateMachine
+    public interface IStateMachine<TState, TTrigger>
     {
         UniTask ActivateAsync();
         void Activate();
-        void Fire(GameEvent trigger);
-        UniTask FireAsync(GameEvent trigger);
+        void Fire(TTrigger trigger);
+        UniTask FireAsync(TTrigger trigger);
     }
 }
