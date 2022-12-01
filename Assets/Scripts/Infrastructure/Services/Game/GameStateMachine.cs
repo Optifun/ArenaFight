@@ -50,13 +50,15 @@ namespace Infrastructure.Services.Game
         public UniTask FireAsync(GameEvent trigger) =>
             _stateMachine.FireAsync(trigger).AsUniTask();
 
+        public void FinishArena(ArenaResult result) =>
+            _stateMachine.Fire(_finishArenaTrigger, result);
+
         private async UniTask LoadGameAsync()
         {
             // TODO: warmup resources or something
             await SceneManager.LoadSceneAsync(Globals.GameScene, LoadSceneMode.Additive).ToUniTask();
             Debug.Log("Game is loading...");
             await FireAsync(GameEvent.ResourcesLoaded);
-            
         }
     }
 }
