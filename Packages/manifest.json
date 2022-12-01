@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "com.cysharp.unitask": "https://github.com/Cysharp/UniTask.git?path=src/UniTask/Assets/Plugins/UniTask",
     "com.leopotam.ecs": "https://github.com/Leopotam/ecs.git",
     "com.unity.collab-proxy": "1.15.7",
     "com.unity.ide.rider": "2.0.7",
