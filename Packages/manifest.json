@@ -39,6 +39,16 @@
     "com.unity.modules.vr": "1.0.0",
     "com.unity.modules.wind": "1.0.0",
     "com.unity.modules.xr": "1.0.0",
-	"com.leopotam.ecs": "https://github.com/Leopotam/ecs.git"
-  }
+	"com.leopotam.ecs": "https://github.com/Leopotam/ecs.git",
+	"org.nuget.scriban":  "2.1.0"
+  },
+  "scopedRegistries": [
+    {
+      "name": "Unity NuGet",
+      "url": "https://unitynuget-registry.azurewebsites.net",
+      "scopes": [
+        "org.nuget"
+      ]
+    }
+  ]
 }
