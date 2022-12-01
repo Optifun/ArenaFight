@@ -2,6 +2,7 @@
 {
     public enum ArenaEvent
     {
+        LoadResources,
         SetupSystems,
         ArenaBuilt,
         Play,
