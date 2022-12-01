@@ -1,46 +1,33 @@
 ﻿using System;
+using System.Threading.Tasks;
+using Cysharp.Threading.Tasks;
+using DefaultNamespace;
 using Game;
+using Infrastructure.Core;
 using Stateless;
+using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Infrastructure.Services.Game
 {
-    public class GameStateMachine : StateMachine<GameState, GameEvent>
+    public class GameStateMachine : IStateMachine
     {
         private readonly StateMachine<GameState, GameEvent> _stateMachine =
             new StateMachine<GameState, GameEvent>(GameState.Loading, FiringMode.Queued);
 
-        private TriggerWithParameters<ArenaResult> _finishArenaTrigger;
+        private StateMachine<GameState, GameEvent>.TriggerWithParameters<ArenaResult> _finishArenaTrigger;
 
-        public GameStateMachine(Func<GameState> stateAccessor, Action<GameState> stateMutator)
-            : base(stateAccessor, stateMutator)
+        public GameStateMachine()
         {
             ConfigureStates();
         }
-
-        public GameStateMachine(GameState initialState) : base(initialState)
-        {
-            ConfigureStates();
-        }
-
-        public GameStateMachine(Func<GameState> stateAccessor, Action<GameState> stateMutator, FiringMode firingMode)
-            : base(stateAccessor, stateMutator, firingMode)
-        {
-            ConfigureStates();
-        }
-
-        public GameStateMachine(GameState initialState, FiringMode firingMode) : base(initialState, firingMode)
-        {
-            ConfigureStates();
-        }
-
-        public void FinishArena(ArenaResult result) =>
-            _stateMachine.Fire(_finishArenaTrigger, result);
 
         private void ConfigureStates()
         {
             _finishArenaTrigger = _stateMachine.SetTriggerParameters<ArenaResult>(GameEvent.FinishArena);
-            
+
             _stateMachine.Configure(GameState.Loading)
+                .OnActivateAsync(async () => await LoadGameAsync())
                 .Permit(GameEvent.ResourcesLoaded, GameState.MainMenu);
 
             _stateMachine.Configure(GameState.MainMenu)
@@ -49,6 +36,27 @@ namespace Infrastructure.Services.Game
 
             _stateMachine.Configure(GameState.Arena)
                 .Permit(GameEvent.FinishArena, GameState.MainMenu);
+        }
+
+        public UniTask ActivateAsync() =>
+            _stateMachine.ActivateAsync().AsUniTask();
+
+        public void Activate() =>
+            _stateMachine.Activate();
+
+        public void Fire(GameEvent trigger) =>
+            _stateMachine.Fire(trigger);
+
+        public UniTask FireAsync(GameEvent trigger) =>
+            _stateMachine.FireAsync(trigger).AsUniTask();
+
+        private async UniTask LoadGameAsync()
+        {
+            // TODO: warmup resources or something
+            await SceneManager.LoadSceneAsync(Globals.GameScene, LoadSceneMode.Additive).ToUniTask();
+            Debug.Log("Game is loading...");
+            await FireAsync(GameEvent.ResourcesLoaded);
+            
         }
     }
 }
