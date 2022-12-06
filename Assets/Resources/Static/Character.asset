@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0a157718dd04b988c0be15281494c50, type: 3}
   m_Name: Character
   m_EditorClassIdentifier: 
-  CharacterPrefab: {fileID: 0}
+  CharacterPrefab: {fileID: 4315531746344777663, guid: 22e4b29e36dc73a46a39d9645a1307b4, type: 3}
   BaseStats:
     MaxHealth: 200
     Speed: 2
