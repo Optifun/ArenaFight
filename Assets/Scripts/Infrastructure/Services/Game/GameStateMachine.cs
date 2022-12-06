@@ -66,7 +66,7 @@ namespace Infrastructure.Services.Game
         private void PlayFirstLevel()
         {
             Debug.Log("Play first level");
-            var arenaInfo = Resources.Load<ArenaInfo>("Static/Level 1");
+            var arenaInfo = Resources.Load<ArenaInfo>("Static/Levels/Level 1");
             PlayLevel(arenaInfo);
         }
 
