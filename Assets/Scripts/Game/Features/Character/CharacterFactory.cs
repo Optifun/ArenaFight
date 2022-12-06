@@ -26,10 +26,11 @@ namespace Game.Features.Character
             var maxHealth = _characterInfo.BaseStats.MaxHealth;
 
             EcsEntity entity = _world.NewEntity();
-            entity.Get<CharacterTag>();
 
             entity
+                .Replace(new CharacterTag())
                 .Replace(new PositionComponent {Position = position})
+                .Replace(new SpeedComponent() {MaximumSpeed = _characterInfo.BaseStats.Speed})
                 .Replace(new HealthComponent {MaxHealth = maxHealth, Health = maxHealth})
                 .Replace(new ExperienceComponent {Level = 1, CurrentXP = 0, ExperienceCapacity = 1000});
 
@@ -47,6 +48,7 @@ namespace Game.Features.Character
             entityReference.Entity = playerEntity;
 
             playerEntity
+                .Replace(new UnityObject<Transform> {Value = go.transform})
                 .Replace(new UnityObject<EntityReference> {Value = entityReference})
                 .Replace(new UnityObject<CharacterView> {Value = view});
 
