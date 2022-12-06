@@ -2,6 +2,8 @@
 using Extensions;
 using Game.Features.Character;
 using Game.Features.Character.Systems;
+using Game.Features.Movement;
+using Game.Shared.Services;
 using Leopotam.Ecs;
 using UnityEngine;
 using Zenject;
@@ -21,12 +23,17 @@ namespace Infrastructure.Installers
 
         public override void InstallBindings()
         {
+            Container.Bind<EcsWorld>().ToSelf().AsSingle();
             Container.Bind<CharacterInfo>().FromInstance(CharacterData).AsCached();
             Container.Bind<IInitializable>().To<ArenaInstaller>().FromInstance(this);
             Container.Bind<CharacterFactory>().ToSelf().AsSingle();
+            Container.Bind<IInputService>().FromInstance(NewInputService());
+
+            Container.Bind<InputSystem>().ToSelf().AsSingle();
             Container.Bind<SpawnCharacterSystem>().ToSelf().AsSingle();
             Container.Bind<MoveCharacterSystem>().ToSelf().AsSingle();
-            Container.Bind<EcsWorld>().ToSelf().AsSingle();
+            Container.Bind<ApplySpeedSystem>().ToSelf().AsSingle();
+            Container.Bind<SyncPositionSystem>().ToSelf().AsSingle();
         }
 
         public void Initialize()
@@ -35,11 +42,20 @@ namespace Infrastructure.Installers
             _systems = new EcsSystems(_world);
             _simulationSystems = new EcsSystems(_world);
 
+#if UNITY_EDITOR
+            Leopotam.Ecs.UnityIntegration.EcsWorldObserver.Create(_world);
+            Leopotam.Ecs.UnityIntegration.EcsSystemsObserver.Create(_systems);
+            Leopotam.Ecs.UnityIntegration.EcsSystemsObserver.Create(_simulationSystems);
+#endif
             _systems
                 .AddResolved<SpawnCharacterSystem>(Container);
 
             _simulationSystems
-                .AddResolved<MoveCharacterSystem>(Container);
+                .AddResolved<InputSystem>(Container)
+                .AddResolved<MoveCharacterSystem>(Container)
+                // .OneFrame<InputComponent>()
+                .AddResolved<ApplySpeedSystem>(Container)
+                .AddResolved<SyncPositionSystem>(Container);
 
             _systems.Init();
             _simulationSystems.Init();
@@ -56,6 +72,12 @@ namespace Infrastructure.Installers
         {
             if (!_initializationCompleted) return;
             _simulationSystems.Run();
+        }
+
+        private IInputService NewInputService()
+        {
+            var go = new GameObject();
+            return go.AddComponent<KeyboardInputService>();
         }
     }
 
