@@ -48,9 +48,9 @@ namespace Game.Features.Character
             entityReference.Entity = playerEntity;
 
             playerEntity
-                .Replace(new UnityObject<Transform> {Value = go.transform})
-                .Replace(new UnityObject<EntityReference> {Value = entityReference})
-                .Replace(new UnityObject<CharacterView> {Value = view});
+                .Replace(new UnityObject<Transform>(go.transform))
+                .Replace(new UnityObject<EntityReference>(entityReference))
+                .Replace(new UnityObject<CharacterView>(view));
 
             return view;
         }
