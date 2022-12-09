@@ -2,6 +2,7 @@
 using Extensions;
 using Game.Features.Character;
 using Game.Features.Character.Systems;
+using Game.Features.Events;
 using Game.Features.Movement;
 using Game.Shared.Services;
 using Leopotam.Ecs;
@@ -29,6 +30,7 @@ namespace Infrastructure.Installers
             Container.Bind<CharacterFactory>().ToSelf().AsSingle();
             Container.Bind<IInputService>().FromInstance(NewInputService());
 
+            Container.Bind<InitEventSystem>().ToSelf().AsSingle();
             Container.Bind<InputSystem>().ToSelf().AsSingle();
             Container.Bind<SpawnCharacterSystem>().ToSelf().AsSingle();
             Container.Bind<MoveCharacterSystem>().ToSelf().AsSingle();
@@ -48,12 +50,12 @@ namespace Infrastructure.Installers
             Leopotam.Ecs.UnityIntegration.EcsSystemsObserver.Create(_simulationSystems);
 #endif
             _systems
+                .AddResolved<InitEventSystem>(Container)
                 .AddResolved<SpawnCharacterSystem>(Container);
 
             _simulationSystems
                 .AddResolved<InputSystem>(Container)
                 .AddResolved<MoveCharacterSystem>(Container)
-                // .OneFrame<InputComponent>()
                 .AddResolved<ApplySpeedSystem>(Container)
                 .AddResolved<SyncPositionSystem>(Container);
 

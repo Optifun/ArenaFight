@@ -1,4 +1,5 @@
 ﻿using Extensions;
+using Game.Features.Tags;
 using Game.Shared.Services;
 using Leopotam.Ecs;
 
@@ -8,7 +9,7 @@ namespace Game.Features.Character.Systems
     {
         private EcsWorld _world;
         private IInputService _input;
-        private EcsFilter<InputComponent> _filter;
+        private EcsFilter<EventTag> _filter;
 
         public InputSystem(IInputService input, EcsWorld world)
         {
@@ -18,15 +19,10 @@ namespace Game.Features.Character.Systems
 
         public void Run()
         {
-            if (_filter.TryGet1(out var inputComponent))
+            foreach (var i in _filter)
             {
-                ref var component = ref inputComponent.Unref();
-                component.Direction = _input.Axis;
-            }
-            else
-            {
-                _world.NewEntity()
-                    .Replace(new InputComponent {Direction = _input.Axis});
+                ref var entity = ref _filter.GetEntity(i);
+                entity.Replace(new InputComponent() {Direction = _input.Axis});
             }
         }
     }
