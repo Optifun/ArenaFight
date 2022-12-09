@@ -1,4 +1,5 @@
-﻿using Cysharp.Threading.Tasks;
+﻿using System.Threading.Tasks;
+using Cysharp.Threading.Tasks;
 using Game;
 using Infrastructure.Core;
 using Infrastructure.Services.Arena;
@@ -44,8 +45,7 @@ namespace Infrastructure.Services.Game
 
             _stateMachine.Configure(GameState.MainMenu)
                 .Permit(GameEvent.EnterArena, GameState.Arena)
-                .OnActivateAsync(async () => PlayFirstLevel())
-                .OnEntry(PlayFirstLevel)
+                .OnEntryAsync(async () => await PlayFirstLevel().AsTask())
                 .OnEntryFrom(_finishArenaTrigger, result => { });
 
             _stateMachine.Configure(GameState.Arena)
@@ -63,10 +63,11 @@ namespace Infrastructure.Services.Game
             await FireAsync(GameEvent.ResourcesLoaded);
         }
 
-        private void PlayFirstLevel()
+        private async UniTask PlayFirstLevel()
         {
             Debug.Log("Play first level");
             var arenaInfo = Resources.Load<ArenaInfo>("Static/Levels/Level 1");
+            await SceneManager.UnloadSceneAsync(Globals.GameScene).ToUniTask();
             PlayLevel(arenaInfo);
         }
 
