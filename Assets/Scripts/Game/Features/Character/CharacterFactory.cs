@@ -2,8 +2,8 @@
 using Game.Features.Health;
 using Game.Features.Movement;
 using Game.Features.Tags;
-using Game.Services;
 using Game.Shared.Components;
+using Game.Shared.Services;
 using Leopotam.Ecs;
 using UnityEngine;
 using CharacterInfo = StaticData.CharacterInfo;

@@ -1,9 +1,8 @@
-﻿using System;
-using Game.Features.Events;
+﻿using Game.Features.Events;
 using Leopotam.Ecs;
 using UnityEngine;
 
-namespace Game.Services
+namespace Game.Shared.Services
 {
     public class TriggerZone<TTag> : MonoBehaviour where TTag : struct
     {

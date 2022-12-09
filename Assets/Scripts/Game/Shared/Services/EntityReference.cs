@@ -1,7 +1,7 @@
 ﻿using Leopotam.Ecs;
 using UnityEngine;
 
-namespace Game.Services
+namespace Game.Shared.Services
 {
     public class EntityReference : MonoBehaviour
     {

@@ -1,4 +1,4 @@
-﻿using Game.Services;
+﻿using Game.Shared.Services;
 using UnityEngine;
 
 namespace Game.Features.Character.Behaviours
