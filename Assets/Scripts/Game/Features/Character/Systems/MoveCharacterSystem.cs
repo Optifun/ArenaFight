@@ -23,14 +23,14 @@ namespace Game.Features.Character.Systems
                 if (!_input.TryGet1(out var input) || input.IsNull()) continue;
 
                 ref var inputComponent = ref input.Unref();
-                if (inputComponent.Direction == Vector3.zero && playerSpeed.Speed.sqrMagnitude < 0.001)
+                if (inputComponent.Direction == Vector2.zero && playerSpeed.Speed.sqrMagnitude < 0.001)
                 {
                     playerSpeed.Speed = Vector3.zero;
                 }
                 else
                 {
                     var newSpeed = inputComponent.Direction * playerSpeed.MaximumSpeed;
-                    playerSpeed.Speed = Vector3.LerpUnclamped(playerSpeed.Speed, newSpeed, InterpolationStep);
+                    playerSpeed.Speed = Vector3.LerpUnclamped(playerSpeed.Speed, newSpeed.AsX0Z(), InterpolationStep);
                 }
             }
         }
