@@ -12,3 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1816f11d2dd343e8833a4c0e624fda20, type: 3}
   m_Name: CameraConfig
   m_EditorClassIdentifier: 
+  <MaximumSpeed>k__BackingField: 12
+  <Zoom>k__BackingField: 10
+  <PositionThreshold>k__BackingField: 6
+  <Prefab>k__BackingField: {fileID: 6922631743745553807, guid: c473c7889dd945c40b08bb6f2a6d46de, type: 3}
