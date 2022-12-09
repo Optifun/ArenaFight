@@ -13,7 +13,7 @@ namespace Game.Features.Movement
             {
                 ref var position = ref _filter.Get1(i);
                 ref var speed = ref _filter.Get2(i);
-                position.Position += speed.Speed * Time.fixedTime;
+                position.Position += Vector3.ClampMagnitude(speed.Speed, speed.MaximumSpeed) * Time.fixedDeltaTime;
             }
         }
     }

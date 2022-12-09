@@ -15,6 +15,6 @@ MonoBehaviour:
   CharacterPrefab: {fileID: 4315531746344777663, guid: 22e4b29e36dc73a46a39d9645a1307b4, type: 3}
   BaseStats:
     MaxHealth: 200
-    Speed: 2
+    Speed: 8
     Damage: 40
   LevelProgression: e80300007805000008070000d0070000

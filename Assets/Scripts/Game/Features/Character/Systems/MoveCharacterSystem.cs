@@ -12,22 +12,30 @@ namespace Game.Features.Character.Systems
         private EcsFilter<InputComponent> _input;
         private EcsFilter<CharacterTag, SpeedComponent> _character;
 
+        private readonly float InterpolationStep = SmoothStep(0.3f);
+
         public void Run()
         {
             foreach (var i in _character)
             {
                 ref var playerSpeed = ref _character.Get2(i);
 
-                if (_input.TryGet1(out var input) && !input.IsNull())
+                if (!_input.TryGet1(out var input) || input.IsNull()) continue;
+
+                ref var inputComponent = ref input.Unref();
+                if (inputComponent.Direction == Vector3.zero && playerSpeed.Speed.sqrMagnitude < 0.001)
                 {
-                    ref var inputComponent = ref input.Unref();
-                    Vector3.LerpUnclamped(playerSpeed.Speed, inputComponent.Direction * playerSpeed.MaximumSpeed,
-                        SmoothStep(Time.fixedTime));
+                    playerSpeed.Speed = Vector3.zero;
+                }
+                else
+                {
+                    var newSpeed = inputComponent.Direction * playerSpeed.MaximumSpeed;
+                    playerSpeed.Speed = Vector3.LerpUnclamped(playerSpeed.Speed, newSpeed, InterpolationStep);
                 }
             }
         }
 
-        private float SmoothStep(float t)
+        private static float SmoothStep(float t)
         {
             float v1 = t * t;
             float v2 = 1 - (1 - t) * (1 - t);

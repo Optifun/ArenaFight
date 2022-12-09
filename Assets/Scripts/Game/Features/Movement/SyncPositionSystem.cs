@@ -17,5 +17,8 @@ namespace Game.Features.Movement
                 transform.Value.position = position.Position;
             }
         }
+
+        private static float FrameIndependent(float k) =>
+            1 - Mathf.Pow(k, Time.fixedDeltaTime);
     }
 }
