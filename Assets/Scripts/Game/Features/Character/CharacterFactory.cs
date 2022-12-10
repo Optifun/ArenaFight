@@ -46,11 +46,12 @@ namespace Game.Features.Character
             var view = go.GetComponent<CharacterView>();
 
             entityReference.Entity = playerEntity;
+            view.AttachEntity(playerEntity);
 
             playerEntity
                 .Replace(new UnityObject<Transform>(go.transform))
                 .Replace(new UnityObject<EntityReference>(entityReference))
-                .Replace(new UnityObject<CharacterView>(view));
+                .Replace(new ViewRef(view));
 
             return view;
         }

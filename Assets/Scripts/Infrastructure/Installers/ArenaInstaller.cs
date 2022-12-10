@@ -6,6 +6,7 @@ using Game.Features.Character.Systems;
 using Game.Features.Events;
 using Game.Features.Movement;
 using Game.Shared.Services;
+using Game.Shared.Systems;
 using Leopotam.Ecs;
 using StaticData;
 using UnityEngine;
@@ -39,6 +40,7 @@ namespace Infrastructure.Installers
             Container.Bind<InitEventSystem>().ToSelf().AsSingle();
 
             Container.Bind<InputSystem>().ToSelf().AsSingle();
+            Container.Bind<UpdateViewSystem>().ToSelf().AsSingle();
             Container.Bind<SpawnCharacterSystem>().ToSelf().AsSingle();
             Container.Bind<MoveCharacterSystem>().ToSelf().AsSingle();
             Container.Bind<ApplySpeedSystem>().ToSelf().AsSingle();
@@ -61,7 +63,8 @@ namespace Infrastructure.Installers
             _systems
                 .AddResolved<InitEventSystem>(Container)
                 .AddResolved<InitPlayerCameraSystem>(Container)
-                .AddResolved<SpawnCharacterSystem>(Container);
+                .AddResolved<SpawnCharacterSystem>(Container)
+                .AddResolved<UpdateViewSystem>(Container);
 
             _simulationSystems
                 .AddResolved<InputSystem>(Container)
