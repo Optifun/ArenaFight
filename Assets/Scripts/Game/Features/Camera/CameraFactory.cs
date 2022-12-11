@@ -21,15 +21,16 @@ namespace Game.Features.Camera
 
         public EcsEntity CreateCameraEntity(Vector3 position)
         {
-            var go = Object.Instantiate(_config.Prefab);
-            var camera = go.GetComponent<UnityEngine.Camera>();
+            var go = Object.Instantiate(_config.Prefab, position, Quaternion.identity);
+            var camera = go.GetComponentInChildren<UnityEngine.Camera>();
             var entity = _world.NewEntity();
+            
             entity.Replace(new CameraTag())
-                .Replace(new CameraComponent {PositionThreshold = _config.PositionThreshold, YOffset = 10})
+                .Replace(new CameraComponent {Config = _config, YOffset = 10})
                 .Replace(new PositionComponent())
                 .Replace(new SpeedComponent {MaximumSpeed = _config.MaximumSpeed})
                 .Replace(new UnityObject<UnityEngine.Camera>(camera))
-                .Replace(new UnityObject<Transform>(camera.transform));
+                .Replace(new UnityObject<Transform>(go.transform));
 
             return entity;
         }

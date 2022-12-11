@@ -27,7 +27,7 @@ namespace Game.Features.Camera.Systems
                 ref SpeedComponent speed = ref _cameraFilter.Get3(i);
 
                 var movementDirection = characterPosition.Position - position.Position;
-                if (movementDirection.sqrMagnitude < camera.PositionThreshold) speed.Speed = Vector3.zero;
+                if (movementDirection.sqrMagnitude < camera.Config.PositionThreshold) speed.Speed = Vector3.zero;
                 var newSpeed = new Vector3(movementDirection.x, 0, movementDirection.z);
                 speed.Speed = Vector3.Lerp(speed.Speed, newSpeed * newSpeed.sqrMagnitude, InterpStep);
             }
