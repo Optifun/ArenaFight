@@ -1,8 +1,10 @@
-﻿namespace Game.Features.Camera.Components
+﻿using StaticData;
+
+namespace Game.Features.Camera.Components
 {
     public struct CameraComponent
     {
         public float YOffset;
-        public float PositionThreshold;
+        public CameraConfig Config;
     }
 }
