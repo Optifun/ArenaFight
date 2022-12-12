@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: CameraConfig
   m_EditorClassIdentifier: 
   <MaximumSpeed>k__BackingField: 12
-  <Zoom>k__BackingField: 1.78
-  <CameraAngle>k__BackingField: 30
+  <Zoom>k__BackingField: 3.2
+  <CameraAngle>k__BackingField: 60
   <PositionThreshold>k__BackingField: 6
   <Prefab>k__BackingField: {fileID: 3211574086812888754, guid: 0ae46ac48f9d62a45959f3ea34cfa800, type: 3}
