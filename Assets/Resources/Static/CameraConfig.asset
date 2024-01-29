@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1816f11d2dd343e8833a4c0e624fda20, type: 3}
   m_Name: CameraConfig
   m_EditorClassIdentifier: 
-  <MaximumSpeed>k__BackingField: 12
-  <Zoom>k__BackingField: 3.2
+  <MaximumSpeed>k__BackingField: 8.88
+  <Zoom>k__BackingField: 2.27
   <CameraAngle>k__BackingField: 60
-  <PositionThreshold>k__BackingField: 6
+  <PositionThreshold>k__BackingField: 3.46
   <Prefab>k__BackingField: {fileID: 3211574086812888754, guid: 0ae46ac48f9d62a45959f3ea34cfa800, type: 3}

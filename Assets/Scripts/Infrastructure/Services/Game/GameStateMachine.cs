@@ -1,10 +1,10 @@
 ﻿using System.Threading.Tasks;
+using Arena.StaticData;
 using Cysharp.Threading.Tasks;
 using Game;
 using Infrastructure.Core;
 using Infrastructure.Services.Arena;
 using Stateless;
-using StaticData;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 

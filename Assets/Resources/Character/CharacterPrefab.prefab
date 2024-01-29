@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4315531746344777654}
   - component: {fileID: 4315531746344777651}
   - component: {fileID: 4315531746344777661}
-  - component: {fileID: 4315531746344777660}
+  - component: {fileID: 2013643849177194352}
   m_Layer: 0
   m_Name: CharacterPrefab
   m_TagString: Untagged
@@ -29,6 +29,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1166239671838911984}
   m_Father: {fileID: 0}
@@ -60,7 +61,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fac82142934746ac9ee7569c63038d5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &4315531746344777660
+--- !u!114 &2013643849177194352
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -69,9 +70,33 @@ MonoBehaviour:
   m_GameObject: {fileID: 4315531746344777663}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c1123ddd9ff44af188af65eee9472a4b, type: 3}
+  m_Script: {fileID: 11500000, guid: 22040cbb29979b046974ade1998a6a2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  particleSystemSimulation:
+    particleItems: []
+    settings:
+      simulationType: 1
+      minSimulationTime: 0.2
+      minEndingTime: 0.1
+      halfEnding: 0.5
+    hasElements: 0
+    hasDefault: 1
+  defaultParameters:
+    useDespawnTime: 0
+    despawnTime: 0
+    cacheCustomViewId: 0
+    useCache: 0
+    useCacheTimeout: 0
+    cacheTimeout: 0
+  interpolationParameters:
+    enabled: 0
+    movementSpeed: 0
+    rotationSpeed: 0
+  parentParameters:
+    enabled: 0
+    parentId: 0
+    roots: []
   _animator: {fileID: 534501178670081829}
   _model: {fileID: 1166239671838911984}
 --- !u!1001 &1704024976359705115
@@ -131,19 +156,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1188683ecb2e49c418fdd6eb12fecf91, type: 3}
---- !u!1 &1973843694693742410 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 1188683ecb2e49c418fdd6eb12fecf91, type: 3}
-  m_PrefabInstance: {fileID: 1704024976359705115}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1166239671838911984 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 1188683ecb2e49c418fdd6eb12fecf91, type: 3}
   m_PrefabInstance: {fileID: 1704024976359705115}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1973843694693742410 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 1188683ecb2e49c418fdd6eb12fecf91, type: 3}
+  m_PrefabInstance: {fileID: 1704024976359705115}
+  m_PrefabAsset: {fileID: 0}
 --- !u!95 &534501178670081829
 Animator:
-  serializedVersion: 3
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -156,7 +181,9 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

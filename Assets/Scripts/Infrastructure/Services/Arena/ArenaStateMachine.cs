@@ -1,7 +1,7 @@
-﻿using Cysharp.Threading.Tasks;
+﻿using Arena.StaticData;
+using Cysharp.Threading.Tasks;
 using Infrastructure.Core;
 using Stateless;
-using StaticData;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Zenject;
