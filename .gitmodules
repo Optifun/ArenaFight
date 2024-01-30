@@ -1,3 +1,15 @@
 [submodule "Assets/ecs-submodule"]
 	path = Assets/ecs-submodule
 	url = https://github.com/chromealex/ecs-submodule
+[submodule "Assets/ME.ECS.Addons/com.me.ecs.markers"]
+	path = Assets/ME.ECS.Addons/com.me.ecs.markers
+	url = https://github.com/chromealex/me.ecs-markers
+[submodule "Assets/ME.ECS.Addons/com.me.ecs.essentials.destroy"]
+	path = Assets/ME.ECS.Addons/com.me.ecs.essentials.destroy
+	url = https://github.com/chromealex/me.ecs-destroy
+[submodule "Assets/ME.ECS.Addons/com.me.ecs.essentials.globalevents"]
+	path = Assets/ME.ECS.Addons/com.me.ecs.essentials.globalevents
+	url = https://github.com/chromealex/me.ecs-globalevents
+[submodule "Assets/ME.ECS.Addons/com.me.ecs.essentials.dataconfigs"]
+	path = Assets/ME.ECS.Addons/com.me.ecs.essentials.dataconfigs
+	url = https://github.com/chromealex/me.ecs-dataconfigs
