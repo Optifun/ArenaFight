@@ -2,7 +2,7 @@ using System;
 using Arena.Services;
 using UnityEngine;
 
-namespace Scripts.Arena
+namespace Arena
 {
     public class ArenaState : ME.ECS.State
     {

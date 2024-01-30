@@ -1,4 +1,4 @@
-namespace Scripts.Arena.Modules {
+namespace Arena.Modules {
 
     using TState = ArenaState;
     

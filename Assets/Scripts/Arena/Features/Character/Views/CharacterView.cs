@@ -1,12 +1,10 @@
-﻿using ME.ECS;
-using Scripts.Arena.Features.Components;
+﻿using Arena.Physics.Components;
+using ME.ECS;
+using ME.ECS.Views.Providers;
 using UnityEngine;
-using UnityEngine.Jobs;
 
-namespace Scripts.Arena.Features.Character.Views
+namespace Arena.Character.Views
 {
-    using ME.ECS.Views.Providers;
-
     public class CharacterView : MonoBehaviourView
     {
         public override bool applyStateJob => true;

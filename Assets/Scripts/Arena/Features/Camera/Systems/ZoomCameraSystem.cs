@@ -1,9 +1,9 @@
-﻿using Arena.StaticData;
+﻿using Arena.Camera.Components;
+using Arena.StaticData;
 using ME.ECS;
-using Scripts.Arena.Features.Components;
 using UnityEngine;
 
-namespace Scripts.Arena.Features.Camera.Systems
+namespace Arena.Camera.Systems
 {
 
 #if ECS_COMPILE_IL2CPP_OPTIONS

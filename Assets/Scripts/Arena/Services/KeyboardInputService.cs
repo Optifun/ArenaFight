@@ -8,7 +8,7 @@ namespace Arena.Services
 
         private void FixedUpdate()
         {
-            Axis = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+            Axis = new Vector2(UnityEngine.Input.GetAxis("Horizontal"), UnityEngine.Input.GetAxis("Vertical"));
             Axis = Vector2.ClampMagnitude(Axis, 1);
         }
     }

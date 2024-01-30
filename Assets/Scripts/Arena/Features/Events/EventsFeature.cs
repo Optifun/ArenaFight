@@ -1,6 +1,6 @@
 ﻿using ME.ECS;
 
-namespace Scripts.Arena.Features
+namespace Arena.Events
 {
 #if ECS_COMPILE_IL2CPP_OPTIONS
     [Unity.IL2CPP.CompilerServices.Il2CppSetOptionAttribute(Unity.IL2CPP.CompilerServices.Option.NullChecks, false),

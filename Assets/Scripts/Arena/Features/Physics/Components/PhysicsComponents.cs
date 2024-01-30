@@ -1,7 +1,7 @@
 ﻿using ME.ECS;
 using UnityEngine;
 
-namespace Scripts.Arena.Features.Components
+namespace Arena.Physics.Components
 {
     public struct PositionComponent : IStructComponent
     {

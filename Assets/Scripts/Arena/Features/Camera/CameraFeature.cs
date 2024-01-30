@@ -1,13 +1,13 @@
-﻿using Arena.StaticData;
+﻿using Arena.Camera.Components;
+using Arena.Camera.Systems;
+using Arena.Components;
+using Arena.Physics.Components;
+using Arena.StaticData;
 using ME.ECS;
-using Scripts.Arena.Components;
-using Scripts.Arena.Features.Components;
 using UnityEngine;
 
-namespace Scripts.Arena.Features
+namespace Arena.Camera
 {
-    using Camera.Systems;
-
 #if ECS_COMPILE_IL2CPP_OPTIONS
     [Unity.IL2CPP.CompilerServices.Il2CppSetOptionAttribute(Unity.IL2CPP.CompilerServices.Option.NullChecks, false),
      Unity.IL2CPP.CompilerServices.Il2CppSetOptionAttribute(Unity.IL2CPP.CompilerServices.Option.ArrayBoundsChecks, false),

@@ -10,6 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2ba638490ecddd9498cbbcb397b61a92, type: 3}
-  m_Name: MovementFeature
+  m_Name: PhysicsFeature
   m_EditorClassIdentifier: 
   editorComment: 

@@ -1,6 +1,6 @@
 ﻿using ME.ECS;
 
-namespace Game.Features.Tags
+namespace Arena.Events.Components
 {
     public struct EventTag : IStructComponent
     {

@@ -1,8 +1,8 @@
-﻿using ME.ECS;
-using Scripts.Arena.Features.Components;
+﻿using Arena.Physics.Components;
+using ME.ECS;
 using UnityEngine;
 
-namespace Scripts.Arena.Features.Movement.Systems
+namespace Arena.Physics.Systems
 {
 #if ECS_COMPILE_IL2CPP_OPTIONS
     [Unity.IL2CPP.CompilerServices.Il2CppSetOptionAttribute(Unity.IL2CPP.CompilerServices.Option.NullChecks, false),

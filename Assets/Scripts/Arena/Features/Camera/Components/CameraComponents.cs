@@ -1,7 +1,7 @@
 ﻿using Arena.StaticData;
 using ME.ECS;
 
-namespace Scripts.Arena.Features.Components
+namespace Arena.Camera.Components
 {
     public struct CameraTag : IStructComponent
     {

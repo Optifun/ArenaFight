@@ -1,6 +1,6 @@
 ﻿using ME.ECS;
 
-namespace Scripts.Arena.Features.Components
+namespace Arena.Character.Components
 {
     public struct CharacterTag : IStructComponent
     {

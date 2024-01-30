@@ -93,6 +93,8 @@ MonoBehaviour:
       name: COMPONENTS_COPYABLE
     - enabled: 0
       name: SET_ENTITY_NAME
+    - enabled: 0
+      name: WORLD_MARKERS_MANAGED
   - name: Release
     isDirty: 0
     configurationType: 1
@@ -133,6 +135,8 @@ MonoBehaviour:
       name: COMPONENTS_COPYABLE
     - enabled: 0
       name: SET_ENTITY_NAME
+    - enabled: 0
+      name: WORLD_MARKERS_MANAGED
   selectedConfiguration: Debug
   featuresListCategories:
     items:
@@ -180,7 +184,7 @@ MonoBehaviour:
       unityGameObjectProviderDisableJobs: 0
       unityParticlesProviderDisableJobs: 0
   worldDebugSettings:
-    createGameObjectsRepresentation: 0
+    createGameObjectsRepresentation: 1
     collectStatistic: 0
     statisticsObject: {fileID: 0}
     showViewsOnScene: 1

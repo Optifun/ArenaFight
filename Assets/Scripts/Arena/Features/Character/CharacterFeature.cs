@@ -1,11 +1,14 @@
-﻿using ME.ECS;
-using Scripts.Arena.Components;
-using Scripts.Arena.Features.Character.Views;
-using Scripts.Arena.Features.Components;
+﻿using Arena.Camera.Components;
+using Arena.Character.Components;
+using Arena.Character.Views;
+using Arena.Components;
+using Arena.Movement.Systems;
+using Arena.Physics.Components;
+using ME.ECS;
 using UnityEngine;
 using CharacterInfo = Arena.StaticData.CharacterInfo;
 
-namespace Scripts.Arena.Features
+namespace Arena.Character
 {
 #if ECS_COMPILE_IL2CPP_OPTIONS
     [Unity.IL2CPP.CompilerServices.Il2CppSetOptionAttribute(Unity.IL2CPP.CompilerServices.Option.NullChecks, false),
@@ -24,6 +27,7 @@ namespace Scripts.Arena.Features
         {
             Filter.Create("Filter-Player").With<PlayerId>().With<CharacterTag>().Push(ref _playerFilter);
             _characterViewId = Worlds.currentWorld.RegisterViewSource(_characterViewSource);
+            AddSystem<MoveCharacterSystem>();
         }
 
         protected override void OnConstructLate()

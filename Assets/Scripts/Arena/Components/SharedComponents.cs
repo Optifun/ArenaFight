@@ -1,7 +1,7 @@
 ﻿using ME.ECS;
 using UnityEngine;
 
-namespace Scripts.Arena.Components
+namespace Arena.Components
 {
     public struct PlayerId : IStructComponent
     {

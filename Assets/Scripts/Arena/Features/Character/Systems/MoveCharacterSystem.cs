@@ -1,10 +1,12 @@
-﻿using Arena.Utils;
+﻿using Arena.Character;
+using Arena.Components;
+using Arena.Input.Components;
+using Arena.Physics.Components;
+using Arena.Utils;
 using ME.ECS;
-using Scripts.Arena.Components;
-using Scripts.Arena.Features.Components;
 using UnityEngine;
 
-namespace Scripts.Arena.Features.Movement.Systems
+namespace Arena.Movement.Systems
 {
 #if ECS_COMPILE_IL2CPP_OPTIONS
     [Unity.IL2CPP.CompilerServices.Il2CppSetOptionAttribute(Unity.IL2CPP.CompilerServices.Option.NullChecks, false),

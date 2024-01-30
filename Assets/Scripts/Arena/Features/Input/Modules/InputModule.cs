@@ -1,14 +1,9 @@
-﻿using Arena.Services;
+﻿using Arena.Input.Components;
+using Arena.Services;
 using ME.ECS;
-using Scripts.Arena.Components;
-using Scripts.Arena.Features.Components;
-using UnityEngine;
 
-namespace Scripts.Arena.Features.Input.Modules {
-    
-    using Components; using Modules; using Systems; using Features; using Markers;
-    
-    #if ECS_COMPILE_IL2CPP_OPTIONS
+namespace Arena.Input.Modules {
+#if ECS_COMPILE_IL2CPP_OPTIONS
     [Unity.IL2CPP.CompilerServices.Il2CppSetOptionAttribute(Unity.IL2CPP.CompilerServices.Option.NullChecks, false),
      Unity.IL2CPP.CompilerServices.Il2CppSetOptionAttribute(Unity.IL2CPP.CompilerServices.Option.ArrayBoundsChecks, false),
      Unity.IL2CPP.CompilerServices.Il2CppSetOptionAttribute(Unity.IL2CPP.CompilerServices.Option.DivideByZeroChecks, false)]

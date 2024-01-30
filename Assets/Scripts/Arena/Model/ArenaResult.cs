@@ -1,4 +1,4 @@
-﻿namespace Game
+﻿namespace Arena.Model
 {
     public class ArenaResult
     {

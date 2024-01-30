@@ -1,6 +1,6 @@
 ﻿using ME.ECS;
 
-namespace Game.Features.Events
+namespace Arena.Events.Components
 {
     public struct TriggerEventComponent : IStructComponent, IComponentOneShot
     {

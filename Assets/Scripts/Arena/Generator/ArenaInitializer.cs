@@ -1,3 +1,5 @@
+using Arena;
+using Arena.Modules;
 using UnityEngine;
 
 #region Namespaces
@@ -7,7 +9,6 @@ namespace Scripts.Arena.Generator.Systems {} namespace Scripts.Arena.Generator.C
 namespace Scripts.Arena.Generator {
     
     using TState = ArenaState;
-    using Arena.Modules;
     using ME.ECS;
     using ME.ECS.Views.Providers;
     using Scripts.Arena.Generator.Modules;
