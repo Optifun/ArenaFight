@@ -3,6 +3,8 @@ using Cysharp.Threading.Tasks;
 using Infrastructure.Core;
 using Stateless;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.ResourceProviders;
 using UnityEngine.SceneManagement;
 using Zenject;
 
@@ -64,11 +66,9 @@ namespace Infrastructure.Services.Arena
 
         private async UniTask LoadLevelAsync()
         {
-            await SceneManager.LoadSceneAsync(_arenaInfo.Scene.name, LoadSceneMode.Additive)
-                .ToUniTask();
+            var scene = await Addressables.LoadSceneAsync(_arenaInfo.Scene, LoadSceneMode.Additive).ToUniTask();
 
-            var levelScene = SceneManager.GetSceneByName(_arenaInfo.Scene.name);
-            SceneManager.SetActiveScene(levelScene);
+            SceneManager.SetActiveScene(scene.Scene);
             Debug.Log("Level scene loaded");
 
             _stateMachine.Fire(ArenaEvent.SetupSystems);

@@ -6,6 +6,7 @@ using Infrastructure.Core;
 using Infrastructure.Services.Arena;
 using Stateless;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 using UnityEngine.SceneManagement;
 
 namespace Infrastructure.Services.Game
@@ -66,7 +67,7 @@ namespace Infrastructure.Services.Game
         private async UniTask PlayFirstLevel()
         {
             Debug.Log("Play first level");
-            var arenaInfo = Resources.Load<ArenaInfo>("Static/Levels/Level 1");
+            var arenaInfo = await Addressables.LoadAssetAsync<ArenaInfo>("Configs/Level_1").ToUniTask();
             await SceneManager.UnloadSceneAsync(Globals.GameScene).ToUniTask();
             PlayLevel(arenaInfo);
         }
